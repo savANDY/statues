@@ -1,24 +1,16 @@
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import Home from './routes/home/Home';
-import Game from './routes/game/Game';
+import App from './App';
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="*" element={<Navigate to="/" />} />
-        <Route path="/" element={<Home />} />
-        <Route path="game" element={<Game />} />
-      </Routes>
-    </BrowserRouter>
+    <App />
   </StrictMode>
 );
 

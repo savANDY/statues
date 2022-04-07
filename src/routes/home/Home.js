@@ -1,11 +1,18 @@
 import React from 'react';
+import UsernameInput from '../../components/username-input';
 
-function Game() {
+function Home() {
   return (
-    <main>
-      <h1 className="text-3xl font-bold underline">Home</h1>
+    <main className="relative text-gray-200 bg-gray-900 h-screen flex flex-col">
+      <div className="max-w-md mt-5 mb-5 mx-auto rounded-xl shadow-md overflow-hidden md:max-w-5xl">
+        <div className="md:flex">
+          <div className="p-8 w-full">
+            <UsernameInput />
+          </div>
+        </div>
+      </div>
     </main>
   );
 }
 
-export default Game;
+export default Home;
