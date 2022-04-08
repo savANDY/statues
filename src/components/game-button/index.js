@@ -1,14 +1,14 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function GameButton({ handleClick, isLeft }) {
+export default function GameButton({ onClick, isLeft }) {
   return (
     <button
       type="button"
       className={`basis-1/2 md:basis-1/3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 whitespace-nowrap ${
         isLeft ? 'rounded-l-lg' : 'rounded-r-lg'
       }`}
-      onClick={handleClick}
+      onClick={onClick}
     >
       {!isLeft && 'RIGHT '}
       <FontAwesomeIcon

@@ -1,16 +1,13 @@
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import {
-  faShoePrints,
-  faTrafficLight
-} from '@fortawesome/free-solid-svg-icons';
-import { library } from '@fortawesome/fontawesome-svg-core';
+
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
+import registerIcons from './registerFaIcons';
 
-library.add(faTrafficLight, faShoePrints);
+registerIcons();
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import GameService from '../../services/game.service';
 import { randomNumber } from '../../utils/utils';
@@ -10,7 +9,7 @@ import UserService from '../../services/user.service';
 
 function Game() {
   const navigate = useNavigate();
-  const [user, loading] = useAuthState(UserService.getAuth());
+  const [user, loading] = UserService.getAuth();
   const [username, setUsername] = useState('');
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
@@ -112,7 +111,7 @@ function Game() {
             Score: {loading ? loadingText : score}
           </h2>
         </div>
-        <GameButtons handleClick={handleStepClick} />
+        <GameButtons onClick={handleStepClick} />
       </main>
     </div>
   );

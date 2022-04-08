@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import GameService from '../../services/game.service';
-import { auth } from '../../init-firebase';
+import UserService from '../../services/user.service';
 
 export default function UsernameInput() {
   const [usernameInput, setUsernameInput] = useState('');
-  const [user, loading] = useAuthState(auth);
+  const [user, loading] = UserService.getAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -69,6 +68,7 @@ export default function UsernameInput() {
             <div className="mt-6 text-right">
               <button
                 className="bg-sky-500 hover:bg-sky-700 px-5 py-2.5 text-sm leading-5 rounded-md font-semibold text-white"
+                name="play"
                 type="submit"
               >
                 Play

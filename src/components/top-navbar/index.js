@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import UserService from '../../services/user.service';
-import { auth } from '../../init-firebase';
 
 export default function TopNavbar() {
-  const [user, loading] = useAuthState(auth);
-  const [username, setUsername] = useState('');
+  const [user, loading] = UserService.getAuth();
+  const [username, setUsername] = useState('loading...');
   useEffect(() => {
     if (loading || !user) {
       return;
@@ -16,7 +14,10 @@ export default function TopNavbar() {
   }, [user, loading]);
   return (
     <nav className="flex sm:justify-center space-x-4 text-gray-300 pb-2 bg-gray-800 px-2 sm:px-4 py-2.5 rounded">
-      <div className="container flex text-slate-600 uppercase font-bold self-center">
+      <div
+        className="container flex text-slate-600 uppercase font-bold self-center"
+        data-testid="username"
+      >
         {username}
       </div>
       <button

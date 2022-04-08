@@ -1,4 +1,5 @@
 import { signInAnonymously, updateProfile } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../init-firebase';
 
 const UserService = {
@@ -13,7 +14,7 @@ const UserService = {
     auth.signOut();
   },
   getAuth() {
-    return auth;
+    return useAuthState(auth);
   }
 };
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import GameButton from '../game-button';
 
-export default function GameButtons({ handleClick }) {
+export default function GameButtons({ onClick }) {
   return (
     <div className="flex flex-row justify-center gap-0.5 w-full">
-      <GameButton handleClick={() => handleClick(true)} isLeft />
-      <GameButton handleClick={() => handleClick(false)} />
+      <GameButton onClick={() => onClick(true)} isLeft />
+      <GameButton onClick={() => onClick(false)} />
     </div>
   );
 }

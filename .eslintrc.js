@@ -7,7 +7,8 @@ module.exports = {
     'plugin:react/recommended',
     'airbnb',
     'prettier',
-    'plugin:jest/recommended'
+    'plugin:jest/recommended',
+    'plugin:jest-dom/recommended'
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -16,7 +17,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  plugins: ['react'],
+  plugins: ['react', 'jest-dom'],
   rules: {
     indent: ['error', 2],
     quotes: ['error', 'single'],
