@@ -8,6 +8,12 @@ const UserService = {
       displayName: username
     });
     return username;
+  },
+  signOut() {
+    auth.signOut();
+  },
+  getAuth() {
+    return auth;
   }
 };
 

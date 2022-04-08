@@ -9,7 +9,9 @@ import {
   push,
   ref,
   get,
-  set
+  increment,
+  set,
+  onValue
 } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
 
@@ -27,6 +29,7 @@ const db = getDatabase();
 const auth = getAuth(firebase);
 
 export {
+  increment,
   auth,
   firebase,
   db,
@@ -38,5 +41,6 @@ export {
   onChildAdded,
   onChildChanged,
   onChildRemoved,
-  off
+  off,
+  onValue
 };
