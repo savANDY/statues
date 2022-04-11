@@ -19,23 +19,13 @@ function Game() {
 
   useEffect(() => {
     if (!username) {
-      return undefined;
+      return;
     }
-    const scoreRef = GameService.listenToScore(username, setScore);
-    const highScoreRef = GameService.listenToHighScore(username, setHighScore);
-
-    return () => {
-      GameService.stopListeningTo(scoreRef, highScoreRef);
-    };
+    GameService.getGame(username).then((response) => {
+      setHighScore(response.highScore || 0);
+      setScore(response.score || 0);
+    });
   }, [username]);
-
-  useEffect(() => {
-    if (score > highScore) {
-      setHighScore(score);
-    } else {
-      GameService.updateHighScore(username, highScore);
-    }
-  }, [score]);
 
   useEffect(() => {
     if (loading) {
@@ -52,10 +42,24 @@ function Game() {
   }, [user, loading]);
 
   useEffect(() => {
+    if (!username || loading || !score) {
+      return;
+    }
     setGreenLightTimer(
       Math.max(10000 - score * 100, 2000) + randomNumber(-1500, 1500)
     );
+    GameService.updateScore(username, score);
+    if (score > highScore) {
+      setHighScore(score);
+    }
   }, [score]);
+
+  useEffect(() => {
+    if (!username || loading || !highScore) {
+      return;
+    }
+    GameService.updateHighScore(username, highScore);
+  }, [highScore]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -85,11 +89,11 @@ function Game() {
 
   const handleStepClick = (isLeftStep) => {
     if (greenLight && isLeftStep === leftStepTurn) {
-      GameService.incrementScore(username, true);
+      setScore(score + 1);
     } else if (greenLight) {
-      GameService.incrementScore(username, false);
+      setScore(score - 1);
     } else {
-      GameService.resetScore(username);
+      setScore(0);
       setLeftStepTurn(true);
     }
     setLeftStepTurn(!isLeftStep);

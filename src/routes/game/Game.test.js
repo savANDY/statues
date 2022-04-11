@@ -26,13 +26,12 @@ jest.mock('../../components/top-navbar', () =>
 );
 
 jest.mock('../../services/game.service', () => ({
-  listenToScore: jest.fn(),
-  listenToHighScore: jest.fn(),
+  getGame: jest.fn(),
   create: jest.fn(),
   incrementScore: jest.fn(),
   resetScore: jest.fn(),
   updateHighScore: jest.fn(),
-  stopListeningTo: jest.fn()
+  updateScore: jest.fn()
 }));
 
 test('renders LEFT button', () => {
